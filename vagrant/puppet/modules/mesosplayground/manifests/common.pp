@@ -22,4 +22,19 @@ class mesosplayground::common {
     ensure => stopped,
     enable => false,
   }
+
+  host { 'master':
+    ensure => present,
+    ip     => '192.168.50.2',
+  }
+
+  host { 'slave1':
+    ensure => present,
+    ip     => '192.168.50.3',
+  }
+
+  host { 'slave2':
+    ensure => present,
+    ip     => '192.168.50.4',
+  }
 }
