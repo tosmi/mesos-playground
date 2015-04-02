@@ -18,6 +18,11 @@ class mesosplayground::common {
     ensure => installed,
   }
 
+  # used for testing
+  package { 'telnet':
+    ensure => installed,
+  }
+
   service { 'firewald':
     ensure => stopped,
     enable => false,
@@ -36,5 +41,11 @@ class mesosplayground::common {
   host { 'slave2':
     ensure => present,
     ip     => '192.168.50.4',
+  }
+
+  file { '/etc/mesos/zk':
+    ensure => present,
+    source => 'puppet:///modules/mesosplayground/zk.slave',
+    notify => Service['mesos-master']
   }
 }

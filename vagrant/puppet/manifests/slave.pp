@@ -8,9 +8,21 @@ service { 'zookeeper':
   enable => false,
 }
 
-file { '/etc/mesos/zk':
+service { 'mesos-slave':
+  ensure => running,
+  enable => true,
+}
+
+file { '/etc/mesos-slave/containerizers':
+  ensure  => present,
+  content => 'docker,mesos',
+  notify  => Service['mesos-slave']
+}
+
+file { '/etc/mesos-slave/executor_registration_timeout':
   ensure => present,
-  source => 'puppet:///modules/mesosplayground/zk.slave',
+  content => '5mins',
+  notify  => Service['mesos-slave']
 }
 
 include mesosplayground::common
