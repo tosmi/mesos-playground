@@ -14,8 +14,18 @@ class mesosplayground::common {
     ensure => installed,
   }
 
+  # there was a problem starting docker with an older
+  # version of device-mapper, so always use the latest
+  # and greatest
+  package { 'device-mapper':
+    ensure => lastest,
+  } ->
   package { 'docker':
     ensure => installed,
+  } ->
+  service { 'docker':
+    ensure => running,
+    enable => true,
   }
 
   # used for testing
