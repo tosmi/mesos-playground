@@ -1,4 +1,9 @@
 class mesosplayground::common {
+
+  Package {
+    allow_virtual => false,
+  }
+
   package { 'mesosphere-el-repo':
     ensure   => installed,
     source   => 'http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm',
@@ -18,11 +23,17 @@ class mesosplayground::common {
   # version of device-mapper, so always use the latest
   # and greatest
   package { 'device-mapper':
-    ensure => lastest,
+    ensure => latest,
   } ->
   package { 'docker':
     ensure => installed,
   } ->
+  file { '/etc/sysconfig/docker':
+    ensure => file,
+    source => 'puppet:///modules/mesosplayground/docker',
+    notify => Service['docker']
+  }
+
   service { 'docker':
     ensure => running,
     enable => true,
@@ -54,8 +65,9 @@ class mesosplayground::common {
   }
 
   file { '/etc/mesos/zk':
-    ensure => present,
-    source => 'puppet:///modules/mesosplayground/zk.slave',
-    notify => Service['mesos-master']
+    ensure  => present,
+    source  => 'puppet:///modules/mesosplayground/zk.slave',
+    require => [ Package['mesos'], Host['master'], ],
+    notify  => Service['mesos-master']
   }
 }
