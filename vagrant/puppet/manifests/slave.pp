@@ -25,4 +25,11 @@ file { '/etc/mesos-slave/executor_registration_timeout':
   notify  => Service['mesos-slave']
 }
 
+file { '/etc/default/mesos-slave':
+  ensure => present,
+  source => 'puppet:///modules/mesosplayground/mesos-slave'
+  notify  => Service['mesos-slave']
+}
+
+
 include mesosplayground::common

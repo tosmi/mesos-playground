@@ -33,7 +33,7 @@ class mesosplayground::common {
     ensure => installed,
   }
 
-  service { 'firewald':
+  service { 'firewalld':
     ensure => stopped,
     enable => false,
   }
