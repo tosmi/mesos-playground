@@ -1,0 +1,2 @@
+MASTER=`cat /etc/mesos/zk`
+resources="cpus(*):1; mem(*):300;ports(*):[10000-32000]"
