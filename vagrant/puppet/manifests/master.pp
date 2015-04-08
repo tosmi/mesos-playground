@@ -24,6 +24,10 @@ file { '/etc/default/mesos-master':
   notify => Service['mesos-master']
 }
 
+
+###############
+# Jenkins setup
+#
 yumrepo { 'jenkins':
   ensure  => present,
   enabled => true,
@@ -33,7 +37,13 @@ yumrepo { 'jenkins':
 package { 'jenkins':
   ensure => installed,
 } ->
+file { '/etc/sysconfig/jenkins':
+  ensure => present,
+  source => 'puppet:///modules/mesosplayground/jenkins',
+  notify => Service['jenkins'],
+}
+
 service { 'jenkins':
   ensure => running,
-  enabled => true,
+  enable => true,
 }
