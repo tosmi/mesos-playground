@@ -1,0 +1,3 @@
+[submodule "vagrant/puppet/modules/jenkins"]
+	path = vagrant/puppet/modules/jenkins
+	url = https://github.com/jenkinsci/puppet-jenkins

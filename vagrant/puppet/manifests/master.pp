@@ -23,3 +23,17 @@ file { '/etc/default/mesos-master':
   source => 'puppet:///modules/mesosplayground/mesos-master',
   notify => Service['mesos-master']
 }
+
+yumrepo { 'jenkins':
+  ensure  => present,
+  enabled => true,
+  baseurl => 'http://pkg.jenkins-ci.org/redhat',
+  gpgcheck => 0,
+} ->
+package { 'jenkins':
+  ensure => installed,
+} ->
+service { 'jenkins':
+  ensure => running,
+  enabled => true,
+}
