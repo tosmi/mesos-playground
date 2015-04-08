@@ -1,3 +1,6 @@
 [submodule "vagrant/puppet/modules/jenkins"]
 	path = vagrant/puppet/modules/jenkins
 	url = https://github.com/jenkinsci/puppet-jenkins
+[submodule "vagrant/puppet/modules/stdlib"]
+	path = vagrant/puppet/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib

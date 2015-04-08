@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
     master.vm.box_url = "puppetlabs/centos-7.0-64-puppet"
     master.vm.network "forwarded_port", guest: 5050, host: 5050, auto_correct: true
     master.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: true
+    master.vm.network "forwarded_port", guest: 8081, host: 8081, auto_correct: true
     master.vm.network "private_network", ip: "192.168.50.2"
 
     master.vm.provision :puppet do |puppet|
