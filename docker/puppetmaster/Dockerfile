@@ -1,7 +1,6 @@
 FROM tosmi/puppet
 MAINTAINER Toni Schmidbauer "toni@stderr.at"
-ENV REFRESHED_AT 2014-04-09
-RUN yum -y update
-RUN rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm && yum -y install puppetserver
+ENV REFRESHED_AT 2014-04-10
 ADD puppet.conf /etc/puppet/puppet.conf
+ENTRYPOINT ["/usr/bin/puppetserver", "foreground"]
 EXPOSE 8140
