@@ -1,5 +1,6 @@
 FROM centos:7
 MAINTAINER Toni Schmidbauer "toni@stderr.at"
-ENV REFRESHED_AT 2014-04-09
+ENV REFRESHED_AT 2014-04-10
 RUN yum -y update
 RUN rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm && yum -y install puppetserver
+RUN chown -R puppet:puppet /etc/puppet
