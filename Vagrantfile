@@ -14,6 +14,10 @@ Vagrant.configure("2") do |config|
     master.vm.network "forwarded_port", guest: 8081, host: 8081, auto_correct: true
     master.vm.network "private_network", ip: "192.168.50.2"
 
+    config.vm.provider "virtualbox" do |v|
+      v.memory = 2500
+    end
+
     master.vm.provision :puppet do |puppet|
       puppet.manifest_file  = "master.pp"
       puppet.manifests_path = "vagrant/puppet/manifests"
