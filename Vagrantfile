@@ -32,6 +32,10 @@ Vagrant.configure("2") do |config|
     slave1.vm.box_url = "puppetlabs/centos-7.0-64-puppet"
     slave1.vm.network "private_network", ip: "192.168.50.3"
 
+    config.vm.provider "virtualbox" do |v|
+      v.memory = 2500
+    end
+
     slave1.vm.provision :puppet do |puppet|
       puppet.manifest_file  = "slave.pp"
       puppet.manifests_path = "vagrant/puppet/manifests"
