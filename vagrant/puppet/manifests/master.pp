@@ -12,6 +12,13 @@ service { 'mesos-master':
   require => Package['mesos']
 }
 
+service { 'mesos-slave':
+  ensure  => stopped,
+  enable  => false,
+  require => Package['mesos']
+}
+
+
 service {'marathon':
   ensure  => running,
   enable  => true,
@@ -23,6 +30,8 @@ file { '/etc/default/mesos-master':
   source => 'puppet:///modules/mesosplayground/mesos-master',
   notify => Service['mesos-master']
 }
+
+
 
 
 ###############
