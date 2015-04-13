@@ -35,3 +35,8 @@ file { '/etc/default/mesos-slave':
   source => 'puppet:///modules/mesosplayground/mesos-slave',
   notify  => Service['mesos-slave']
 }
+
+file { '/etc/puppet/puppet.conf':
+  ensure => present,
+  source => 'puppet:///modules/mesosplayground/puppet.conf.slave',
+}
