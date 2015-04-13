@@ -50,4 +50,11 @@ service { 'jenkins':
 
 package { 'haproxy':
   ensure => installed,
+} ->
+file { '/etc/haproxy/haproxy.cfg':
+  ensure => present,
+  mode   => 644,
+  owner  => root,
+  group  => root,
+  source => 'puppet:///modules/mesosplayground/haproxy.cfg',
 }
