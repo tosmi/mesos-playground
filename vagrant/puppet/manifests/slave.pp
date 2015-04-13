@@ -6,6 +6,12 @@ service { 'mesos-master':
   require => Package['mesos']
 }
 
+service { 'marathon':
+  ensure => stopped,
+  enable => false,
+  require => Package['marathon']
+}
+
 service { 'zookeeper':
   ensure => stopped,
   enable => false,
