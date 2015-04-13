@@ -1,0 +1,21 @@
+{
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+	"image": "tosmi/puppetmaster",
+	"network": "BRIDGE",
+	"portMappings": [
+            { "containerPort": 8140, "hostPort": 8140, "servicePort": 0, "protocol": "tcp" }
+	],
+	"parameters": [
+            { "key": "hostname", "value": "puppetmaster" },
+            { "key": "add-host", "value": "puppetca:192.168.50.2" }
+	]
+    }
+  },
+  "id": "puppetmaster",
+  "instances": 1,
+  "cpus": 1,
+  "mem": 256,
+  "uris": []
+}
