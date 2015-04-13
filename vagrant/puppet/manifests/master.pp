@@ -47,3 +47,7 @@ service { 'jenkins':
   ensure => running,
   enable => true,
 }
+
+package { 'haproxy':
+  ensure => installed,
+}
