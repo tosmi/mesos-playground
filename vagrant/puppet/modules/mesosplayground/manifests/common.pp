@@ -70,4 +70,11 @@ class mesosplayground::common {
     require => [ Package['mesos'], Host['master'], ],
     notify  => Service['mesos-master']
   }
+
+  host { 'puppetca':
+    ensure       => present,
+    ip           => '192.168.50.2',
+    host_aliases => 'puppet',
+  }
+
 }
