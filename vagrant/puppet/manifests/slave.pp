@@ -42,3 +42,9 @@ file { '/etc/puppet/puppet.conf':
   group  => puppet,
   source => 'puppet:///modules/mesosplayground/puppet.conf.slave',
 }
+
+host { 'puppetmaster':
+  ensure       => present,
+  ip           => '192.168.50.2',
+  host_aliases => 'puppetmaster.stderr.at',
+}
