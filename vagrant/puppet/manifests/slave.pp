@@ -38,5 +38,7 @@ file { '/etc/default/mesos-slave':
 
 file { '/etc/puppet/puppet.conf':
   ensure => present,
+  owner  => puppet,
+  group  => puppet,
   source => 'puppet:///modules/mesosplayground/puppet.conf.slave',
 }
