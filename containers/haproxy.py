@@ -63,7 +63,7 @@ def configure_slaves(slaves):
   config      = StringIO.StringIO()
   config.write(HAPROXY_HEADER)
   for slave in slaves:
-    config.write("    server puppetmaster%i %s:8140 check" % (slave_count, slave ))
+    config.write("    server puppetmaster%i %s:8140 check\n" % (slave_count, slave ))
 
   config.write('\n')
   return config.getvalue()
